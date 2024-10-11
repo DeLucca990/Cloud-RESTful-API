@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     build: .
-    constainer_name: cloud_project
+    container_name: fast_api
     ports:
       - "8000:8000"
     environment:

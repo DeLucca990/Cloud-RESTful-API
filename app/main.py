@@ -11,15 +11,8 @@ from utils import get_password_hash, verify_password, create_access_token, get_c
 
 load_dotenv()
 
-# Variáveis de ambiente
-USERNAME = "postgres"
-PASSWORD = os.getenv("PASSWORD")
-HOST = "localhost"
-PORT = "5432"
-DATABASE = "ProjetoCloud"
-
 # Conexão com o banco de dados
-DATABASE_URL = f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
