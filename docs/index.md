@@ -1,0 +1,133 @@
+# API REST com FastAPI e PostgreSQL
+
+## Integrante
+- **Pedro De Lucca** 
+- [Github](https://github.com/DeLucca990) 
+- [Linkedin](https://br.linkedin.com/in/pedro-de-lucca-s-c-ferro-316252238)
+
+## Visão Geral
+Esta API permite que os usuários realizem o registro, login e consultem dados sobre a probabilidade de origem de um nome, indicando qual país a pessoa pode ter nascido com base no nome fornecido. A API é construída usando FastAPI e PostgreSQL, e é executada em contêineres Docker.
+
+## Tecnologias
+- FastAPI
+- PostgreSQL
+- Docker
+- Docker Compose
+
+## Como executar
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/DeLucca990/Cloud-RESTful-API.git
+    ```
+
+2. Entre na pasta 'app' do projeto:
+    ```bash
+    cd Cloud-RESTful-API/app
+    ```
+
+3. Execute o comando abaixo para criar e iniciar os contêineres:
+    ```bash
+    docker compose up 
+    ```
+
+## Endpoints
+- **POST /register**: Registra um novo usuário
+- **POST /login**: Realiza o login do usuário
+- **GET /consultar**: Retorna a probabilidade de origem de um nome
+
+## Como usar
+Você irá utilizar o Swagger (nativo do FastAPI) para testar a API. Para isso, siga os passos abaixo:
+1. Acesse a documentação da API em:
+    ```bash
+    http://localhost:8000
+    ```
+
+2. Crie um novo usuário acessando o endpoint **POST /register** e informando os dados necessários;
+    
+    Para essa etapa você precisa informar os seguintes dados no formato JSON:
+    ```json
+    {
+        "nome": "seu_nome",
+        "email": "seu_email",
+        "senha": "sua_senha"
+    }
+    ```
+    Se o usuário for criado com sucesso, você receberá uma mensagem de confirmação com um token JWT no seguinte formato:
+    ```json
+    {
+        "jwt": "seu_token"
+    }
+    ```
+    Copie o token gerado
+
+3. _(Opcional caso você tenha acabado de realizar o cadastro)_ Acesse o endpoint **POST /login** e informe o email e senha cadastrados no passo anterior;
+    
+    Para essa etapa você precisa informar os seguintes dados no formato JSON:
+    ```json
+    {
+        "email": "seu_email",
+        "senha": "sua_senha"
+    }
+    ```
+    Se o login for realizado com sucesso, você receberá uma mensagem de confirmação com um token JWT no seguinte formato:
+    ```json
+    {
+        "jwt": "seu_token"
+    }
+    ```
+    Copie o token gerado
+
+4. Acesse o endpoint **GET /consultar** e informe o nome que deseja consultar a origem;
+
+    Para essa etapa você precisa informar o nome que deseja consultar e o token JWT gerado no passo anterior;
+    
+    Para adicionar o token JWT, clique no cadeado onde está escrito Authorize no canto superior direito da página do Swagger e cole o token no campo "Value" e clique em "Authorize";
+
+    Em seguida, informe o nome que deseja consultar no campo "nome" e clique em "Execute";
+
+    Exemplo: Para o nome _Ventura_ você receberá a seguinte resposta:
+    ```json
+    {
+    "count": 93808,
+    "name": "Ventura",
+    "country": [
+        {
+        "country_id": "Guatemala",
+        "probability": 0.0778645843473412
+        },
+        {
+        "country_id": "Dominican Republic",
+        "probability": 0.06733259445061568
+        },
+        {
+        "country_id": "Portugal",
+        "probability": 0.06602045473537535
+        },
+        {
+        "country_id": "El Salvador",
+        "probability": 0.04476210258091573
+        },
+        {
+        "country_id": "United States",
+        "probability": 0.04369474023158603
+        }
+    ]
+    }
+    ```
+
+5. Para finalizar, execute o comando abaixo (em outro terminal) para parar os contêineres:
+    ```bash
+    docker compose down
+    ```
+<div class="result" markdown>
+!!! tip
+    O token JWT gerado é válido por 30 minutos. Após esse tempo, você precisará realizar o login novamente para obter um novo token.
+</div>
+
+
+## Referências
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Swagger](https://swagger.io/)
