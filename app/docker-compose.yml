@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    image: pedrodl/cloud_project1:latest
     container_name: fast_api
     ports:
       - "8000:8000"
