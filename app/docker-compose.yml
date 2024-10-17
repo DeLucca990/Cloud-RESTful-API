@@ -17,8 +17,8 @@ services:
     image: postgres
     container_name: postgres_db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER:postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:postgres}
       - POSTGRES_DB=ProjetoCloud
     # Expondo na porta 5430 para não conflitar com o postgres local
     ports:
