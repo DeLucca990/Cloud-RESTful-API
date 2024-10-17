@@ -14,6 +14,10 @@ Esta API permite que os usuários realizem o registro, login e consultem dados s
 - Docker
 - Docker Compose
 
+## Links úteis
+- [Repositório no Docker Hub](https://hub.docker.com/repository/docker/pedrodl/cloud_project1/general)
+- [Repositório no Github](https://github.com/DeLucca990/Cloud-RESTful-API)
+
 ## Como executar
 1. Clone o repositório:
     ```bash
@@ -124,6 +128,13 @@ Você irá utilizar o Swagger (nativo do FastAPI) para testar a API. Para isso, 
     O token JWT gerado é válido por 30 minutos. Após esse tempo, você precisará realizar o login novamente para obter um novo token.
 </div>
 
+## Vídeo demonstrativo
+
+<div style="border: 1px solid #0540e3; padding: 3px; width: fit-content; margin: auto;">
+    <video controls>
+        <source src="./video/demosntracao_cloud.mp4" type="video/mp4">
+    </video>
+</div>
 
 ## Referências
 - [FastAPI](https://fastapi.tiangolo.com/)
