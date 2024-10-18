@@ -14,7 +14,7 @@ services:
       - .:/app
   
   db:
-    image: postgres_cloud
+    image: postgres
     container_name: postgres_db_cloud
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
