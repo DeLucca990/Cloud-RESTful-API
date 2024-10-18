@@ -1,7 +1,9 @@
+name: cloud_project1
+
 services:
   app:
     image: pedrodl/cloud_project1:latest
-    container_name: fast_api
+    container_name: fast_api_cloud
     ports:
       - "8000:8000"
     environment:
@@ -12,12 +14,12 @@ services:
       - .:/app
   
   db:
-    image: postgres
-    container_name: postgres_db
+    image: postgres_cloud
+    container_name: postgres_db_cloud
     environment:
-      - POSTGRES_USER=${POSTGRES_USER:postgres}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:postgres}
-      - POSTGRES_DB=ProjetoCloud
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-ProjetoCloud}
     # Expondo na porta 5430 para não conflitar com o postgres local
     ports:
       - "5430:5432"
