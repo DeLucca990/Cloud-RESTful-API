@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     image: pedrodl/cloud_project1:latest
