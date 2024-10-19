@@ -19,7 +19,12 @@ theme:
         name: Switch to system preference
 
 nav:
-  - Home: index.md
+  - Landing Page: index.md
+  - Aplicação Local:
+    - Home: local_index.md
+    - Técnico: local_tech.md
+  - Aplicação AWS:
+    - Home: aws_index.md
 
 markdown_extensions:
   - admonition
