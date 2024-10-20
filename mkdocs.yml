@@ -1,4 +1,4 @@
-site_name: API REST com FastAPI e PostgreSQL
+site_name: Projeto 1 Cloud - Docker & RESTful API
 theme:
   name: material
   palette:
