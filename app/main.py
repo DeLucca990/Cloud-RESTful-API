@@ -81,7 +81,7 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     return {"jwt": acces_token}
 
 @app.get("/consultar", tags=["Consultar API Externa"])
-def consultar(name: str = Query(..., description="Nome para pesquisa na API"), current_user: str = Depends(get_current_user)):
+def consultar(name: str = Query("Ventura", description="Nome para pesquisa na API"), current_user: str = Depends(get_current_user)):
     response = requests.get(f"https://api.nationalize.io", params={"name": name})
     if response.status_code != 200:
         raise HTTPException(status_code=500, detail="Erro ao consultar a API externa")
