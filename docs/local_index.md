@@ -13,7 +13,7 @@ Esta API permite que os usuários realizem o registro, login e consultem dados s
 - [Repositório no Docker Hub](https://hub.docker.com/repository/docker/pedrodl/cloud_project1/general)
 - [Repositório no Github](https://github.com/DeLucca990/Cloud-RESTful-API)
 
-## Como executar
+## Como executar o projeto passo a passo
 1. Clone o repositório:
     ```bash
     git clone https://github.com/DeLucca990/Cloud-RESTful-API.git
@@ -28,6 +28,27 @@ Esta API permite que os usuários realizem o registro, login e consultem dados s
     ```bash
     docker compose up 
     ```
+
+## Executar apenas com o `compose.yml`
+<a href="https://raw.githubusercontent.com/DeLucca990/Cloud-RESTful-API/main/app/compose.yml" id="downloadLink">Baixar Arquivo</a>
+
+<script>
+  document.getElementById('downloadLink').addEventListener('click', function(event) {
+    event.preventDefault();
+    const url = this.href;
+    const fileName = 'compose.yml';
+
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      })
+      .catch(() => alert('Falha ao baixar o arquivo.'));
+  });
+</script>
 
 ## Endpoints
 - **POST /register**: Registra um novo usuário

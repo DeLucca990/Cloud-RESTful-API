@@ -1,11 +1,11 @@
 # Técnicas utilizadas para criação do container Docker
 
 ## Geração do container
-Para a geração do container Docker, foi utilizado o arquivo Dockerfile, que contém as instruções necessárias para a criação da imagem e o arquivo docker-compose.yml, que contém as configurações necessárias para a execução do container.
+Para a geração do container Docker, foi utilizado o arquivo Dockerfile, que contém as instruções necessárias para a criação da imagem e o arquivo compose.yml, que contém as configurações necessárias para a execução do container.
 
 <div class="warning" markdown>
 !!! warning
-    Os arquivos Dockerfile e docker-compose.yml devem estar presentes na raiz do projeto. Neste caso, está presente na pasta `app`. Execute o comando `cd app` para acessar a pasta do projeto.
+    Os arquivos Dockerfile e compose.yml devem estar presentes na raiz do projeto. Neste caso, está presente na pasta `app`. Execute o comando `cd app` para acessar a pasta do projeto.
 </div>
 
 Exemplo do `Dockerfile:`
@@ -33,7 +33,7 @@ EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-Exemplo do `docker-compose.yml:`
+Exemplo do `compose.yml:`
 
 ```yaml
 name: cloud_project1
