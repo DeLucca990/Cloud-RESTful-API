@@ -60,33 +60,37 @@ services:
     ports:
       - "5430:5432"
 ```
+## Builds da imagem
 
-## Build da imagem
-Para construir a imagem Docker, é necessário executar o comando `docker build -t <nome_da_imagem> .` no terminal, dentro da pasta `app` do projeto. O comando `docker build` cria a imagem Docker com base no Dockerfile presente no diretório atual e o parâmetro `-t` define o nome da imagem.
+1. ### Build da imagem padrão
 
-Exemplo de construção da imagem Docker:
+    Para construir a imagem Docker, é necessário executar o comando `docker build -t <nome_da_imagem> .` no terminal, dentro da pasta `app` do projeto. O comando `docker build` cria a imagem Docker com base no Dockerfile presente no diretório atual e o parâmetro `-t` define o nome da imagem.
 
-```bash
-docker build -t pedrodl/cloud_project1:latest .
-```
+    Exemplo de construção da imagem Docker:
 
-## Build da imagem em ambas as arquiteturas (x86 e ARM)
-Para construir a imagem Docker em ambas as arquiteturas (x86 e ARM), é necessário utilizar o comando `docker buildx build --platform linux/amd64,linux/arm64 -t <nome_da_imagem> .` no terminal, dentro da pasta `app` do projeto. O comando `docker buildx build` cria a imagem Docker com base no Dockerfile presente no diretório atual e o parâmetro `--platform` define as arquiteturas em que a imagem será construída.
+    ```bash
+    docker build -t pedrodl/cloud_project1:latest .
+    ```
 
-Exemplo de construção da imagem Docker em ambas as arquiteturas:
+2. ### Build da imagem em ambas as arquiteturas (x86 e ARM)
 
-```bash
-# Ativar o buildx
-docker buildx create --use
+    Para construir a imagem Docker em ambas as arquiteturas (x86 e ARM), é necessário utilizar o comando `docker buildx build --platform linux/amd64,linux/arm64 -t <nome_da_imagem> .` no terminal, dentro da pasta `app` do projeto. O comando `docker buildx build` cria a imagem Docker com base no Dockerfile presente no diretório atual e o parâmetro `--platform` define as arquiteturas em que a imagem será construída.
 
-# Construir a imagem em ambas as arquiteturas
-docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+    Exemplo de construção da imagem Docker em ambas as arquiteturas:
 
-docker buildx build --platform linux/amd64,linux/arm64 -t pedrodl/cloud_project1:latest . --push
-```
+    ```bash
+    # Ativar o buildx
+    docker buildx create --use
+
+    # Resetar o buildx
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+
+    # Construir a imagem em ambas as arquiteturas e enviar para o Docker Hub
+    docker buildx build --platform linux/amd64,linux/arm64 -t pedrodl/cloud_project1:latest . --push
+    ```
 
 ## Publicação da imagem no Docker Hub
-Para publicar a imagem no Docker Hub, é necessário criar uma conta no site [Docker Hub](https://hub.docker.com/). Após criar a conta, é necessário logar no Docker Hub no terminal com o comando `docker login`. Após logar, é possível publicar a imagem no Docker Hub com o comando `docker push <nome_da_imagem>`.
+Para publicar a imagem no Docker Hub, é necessário criar uma conta no site [Docker Hub](https://hub.docker.com/). Após criar a conta, é necessário logar no terminal com o comando `docker login`. Após isso, é possível publicar a imagem com o comando `docker push <nome_usuario>/<nome_da_imagem>:[TAG]`.
 
 Exemplo de publicação da imagem no Docker Hub:
 
