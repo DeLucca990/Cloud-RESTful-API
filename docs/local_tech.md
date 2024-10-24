@@ -48,8 +48,6 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/ProjetoCloud
     depends_on:
       - db
-    volumes:
-      - .:/app
   
   db:
     image: postgres
@@ -61,11 +59,6 @@ services:
     # Expondo na porta 5430 para não conflitar com o postgres local
     ports:
       - "5430:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-  
-volumes:
-  postgres_data:
 ```
 
 ## Build da imagem
@@ -89,7 +82,7 @@ docker buildx create --use
 # Construir a imagem em ambas as arquiteturas
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
-docker buildx build --platform linux/amd64,linux/arm64 -t pedrodl/cloud_project1:latest .
+docker buildx build --platform linux/amd64,linux/arm64 -t pedrodl/cloud_project1:latest . --push
 ```
 
 ## Publicação da imagem no Docker Hub
