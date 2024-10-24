@@ -47,3 +47,9 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(bearer_
 def load_countries(file):
     df = pd.read_csv(file)
     return dict(zip(df['Code'], df['Name']))
+
+# Carrega nomes
+def load_names(file):
+    with open(file, 'r') as f:
+        names = f.readlines()
+    return [name.strip() for name in names]
