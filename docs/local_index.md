@@ -122,6 +122,11 @@ document.getElementById('downloadLink').addEventListener('click', function(event
     ]
     }
     ```
+    <div class="info" markdown>
+    !!! Info
+        Caso você realize a requisição sem informar um nome, a API retornará informações sobre um nome aleatório.
+    </div>
+
 
 5. Para finalizar, execute o comando abaixo (em outro terminal) para parar os containers::
     ```bash
