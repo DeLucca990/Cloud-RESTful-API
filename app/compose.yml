@@ -10,8 +10,6 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/ProjetoCloud
     depends_on:
       - db
-    volumes:
-      - .:/app
   
   db:
     image: postgres
@@ -23,8 +21,3 @@ services:
     # Expondo na porta 5430 para não conflitar com o postgres local
     ports:
       - "5430:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-  
-volumes:
-  postgres_data:
