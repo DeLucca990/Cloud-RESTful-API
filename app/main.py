@@ -5,9 +5,10 @@ from sqlalchemy import Column, Integer, String, create_engine #type: ignore
 from sqlalchemy.ext.declarative import declarative_base #type: ignore
 from sqlalchemy.orm import sessionmaker #type: ignore
 import requests
+import random
 from dotenv import load_dotenv
 import os
-from utils import get_password_hash, verify_password, create_access_token, get_current_user, load_countries
+from utils import get_password_hash, verify_password, create_access_token, get_current_user, load_countries, load_names
 
 load_dotenv()
 
@@ -81,7 +82,14 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
     return {"jwt": acces_token}
 
 @app.get("/consultar", tags=["Consultar API Externa"])
-def consultar(name: str = Query("Ventura", description="Nome para pesquisa na API"), current_user: str = Depends(get_current_user)):
+def consultar(
+    name: str = Query(None, description="Nome para pesquisa na API"), 
+    current_user: str = Depends(get_current_user)):
+
+    names = load_names("./data/names.txt")
+    if name is None:
+        name = random.choice(names)
+    
     response = requests.get(f"https://api.nationalize.io", params={"name": name})
     if response.status_code != 200:
         raise HTTPException(status_code=500, detail="Erro ao consultar a API externa")

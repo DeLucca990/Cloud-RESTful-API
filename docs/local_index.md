@@ -43,7 +43,14 @@ document.getElementById('downloadLink').addEventListener('click', function(event
 
 ## Como usar
 
-1. Acesse a documentação da API em:
+1. Rodar o container:
+
+    Dentro da pasta onde o arquivo `compose.yml` foi baixado, execute o comando abaixo:
+    ```bash
+    docker compose up
+    ```
+
+2. Acesse a documentação da API em:
 
     Você irá utilizar o Swagger (nativo do FastAPI) para testar a API. Para isso, siga os passos abaixo:
     ```bash
@@ -68,7 +75,7 @@ document.getElementById('downloadLink').addEventListener('click', function(event
     ```
     Copie o token gerado
 
-3. _(Opcional caso você tenha acabado de realizar o cadastro)_ Acesse o endpoint **POST /login** e informe o email e senha cadastrados no passo anterior;
+4. _(Opcional caso você tenha acabado de realizar o cadastro)_ Acesse o endpoint **POST /login** e informe o email e senha cadastrados no passo anterior;
     
     Para essa etapa você precisa informar os seguintes dados no formato JSON:
     ```json
@@ -85,7 +92,7 @@ document.getElementById('downloadLink').addEventListener('click', function(event
     ```
     Copie o token gerado
 
-4. Acesse o endpoint **GET /consultar** e informe o nome que deseja consultar a origem;
+5. Acesse o endpoint **GET /consultar** e informe o nome que deseja consultar a origem;
 
     Para essa etapa você precisa informar o nome que deseja consultar e o token JWT gerado no passo anterior;
     
@@ -122,8 +129,13 @@ document.getElementById('downloadLink').addEventListener('click', function(event
     ]
     }
     ```
+    <div class="info" markdown>
+    !!! Info
+        Caso você realize a requisição sem informar um nome, a API retornará informações sobre um nome aleatório.
+    </div>
 
-5. Para finalizar, execute o comando abaixo (em outro terminal) para parar os containers::
+
+6. Para finalizar, execute o comando abaixo (em outro terminal) para parar os containers::
     ```bash
     docker compose down
     ```
