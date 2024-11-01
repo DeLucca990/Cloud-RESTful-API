@@ -1,4 +1,6 @@
 site_name: Projeto 1 Cloud - Docker & RESTful API
+repo_url: https://github.com/DeLucca990/Cloud-RESTful-API
+repo_name: Repo GitHub
 theme:
   name: material
   palette:
