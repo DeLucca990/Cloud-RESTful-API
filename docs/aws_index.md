@@ -3,13 +3,25 @@
 A aplicação está disponível no seguinte link: [Api App](http://a9081d685efb34ba0bd6b6340780caa3-1034918237.us-east-2.elb.amazonaws.com/)
 
 <div class="warning" markdown>
-!!! Warning
+!!! Warning "Aviso"
     A aplicação está hospedada em um ambiente de teste e pode ser desativada a qualquer momento.
 </div>
 
 <div class="info" markdown>
-!!! Info
-    Siga o passo a passo [aqui](local_index.md) para saber como utilizar a aplicação.
+!!! Info "Instruções"
+    Siga o passo a passo [aqui](local_index.md/#como-usar) para saber como utilizar a aplicação.
+</div>
+
+## Pré-requisitos:
+- Conta na AWS
+- AWS CLI
+- EKSCTL
+
+<div class="info" markdown>
+!!! Warning "Aviso Amigo"
+    Caso não tenha o AWS CLI instalado, siga o passo a passo [aqui](https://docs.aws.amazon.com/pt_br/cli/latest/userguide/install-cliv2.html).
+
+    Caso você não tenha o EKSCTL instalado, siga o passo a passo [aqui](https://eksctl.io/installation/).
 </div>
 
 ## Passo a passo para o deploy:
@@ -103,7 +115,7 @@ spec:
     app: postgres
 ```
 
-5. Aplicar os arquivos no cluster:
+5. Aplicar os arquivos no cluster _(rode os comandos abaixo na pasta onde os arquivos `.yml` estão)_:
 ```bash
 kubectl apply -f app-deployment.yml
 kubectl apply -f app-service.yml
