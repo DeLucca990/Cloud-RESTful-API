@@ -27,13 +27,15 @@ A aplicação está disponível no seguinte link: [Api App](http://a9081d685efb3
 <div class="info" markdown>
 ??? info "Realizar o deploy por meio do CloudShell"
     Para realizar o deploy por meio do CloudShell, acesse o console da AWS e procure por `CloudShell` no canto superior direito.
-
     Caso queira saber mais sobre o AWS CloudShell [acesse](https://docs.aws.amazon.com/pt_br/cloudshell/latest/userguide/welcome.html).
+
+    Instale o [EKSCTL](https://eksctl.io/installation/). Sabemos que o CloudShell roda uma versão do Linux, então siga o passo a passo para instalar o EKSCTL em base Unix.
+    Após isso, siga as instruções para deploy abaixo.
 </div>
 
 <div class="info" markdown>
 ??? tip "Dica Amiga"
-    Utilize o CloudShell para realizar o deploy, pois ele já vem com o AWS CLI e o EKSCTL instalados.
+    Utilize o CloudShell para realizar o deploy, pois ele é mais simples de instalar os pacotes.
 </div>
 ## Passo a passo para o deploy:
 Para realizar o deploy da aplicação na AWS, siga os passos abaixo:
@@ -42,11 +44,17 @@ Para realizar o deploy da aplicação na AWS, siga os passos abaixo:
 ```bash
 eksctl create cluster --name cloud-project-cluster --region us-east-2 --nodes 2
 ```
+    - `--name` é o nome do cluster a ser criado.
+    - `--region` é a região onde o cluster será criado, no nosso caso, us-east-2 (Ohio).
+    - `--nodes` é a quantidade de nós que o cluster terá, 2 pois é como o mestre mandou.
 
 2. Configurar o kubectl:
 ```bash
 aws eks --region us-east-2 update-kubeconfig --name cloud-project-cluster
 ```
+    - `--region` é a região onde o cluster foi criado.
+    - `--update kubeconfig` é o comando para atualizar o arquivo de configuração do kubectl.
+    - `--name` é o nome do cluster criado.
 
 3. Criar arquivo app `app-deployment.yml`:
 ```yml
@@ -85,7 +93,8 @@ spec:
   selector:
     app: fastapi
 ```
-
+    - Faça as devidas modificações caso julgue necessário, contudo, o arquivo acima já está configurado para a aplicação. A única
+    modificação obrigatória é a variável `image` que deve ser alterada para a sua imagem do Docker Hub.
 4. Criar arquivo db `db-deployment.yml`:
 ```yml
 apiVersion: apps/v1
