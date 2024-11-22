@@ -138,10 +138,24 @@ spec:
 5. Aplicar os arquivos no cluster _(rode os comandos abaixo na pasta onde os arquivos `.yml` estão)_:
 ```bash
 kubectl apply -f app-deployment.yml
-kubectl apply -f app-service.yml
+kubectl apply -f db-deployment.yml
 ```
 
 6. Acessar a aplicação:
 ```bash
 kubectl get svc fastapi-service
 ```
+
+## Vídeo demonstrativo
+
+<div style="border: 1px solid #0540e3; padding: 3px; width: fit-content; margin: auto;">
+    <iframe 
+        width="670" 
+        height="380" 
+        src="https://www.youtube.com/embed/dqEOfnO3vWc" 
+        title="Vídeo demonstrativo" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
